@@ -1,0 +1,26 @@
+{
+    "name": "SPFX Dev",
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "runArgs": [
+      "--userns=keep-id:uid=1000,gid=1000"
+     ],
+     "containerUser": "codium",
+     "updateRemoteUserUID": true,
+    "workspaceFolder": "/workspace",
+    "mounts": [
+      "source=${localWorkspaceFolder},target=/workspace,type=bind"
+    ],
+    "postCreateCommand": "npm install",
+    "remoteUser": "node",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "esbenp.prettier-vscode",
+          "dbaeumer.vscode-eslint",
+          "ms-vscode.vscode-typescript-tslint-plugin"
+        ]
+      }
+    }
+}  

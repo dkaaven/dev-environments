@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: python-dev
+spec:
+  containers:
+    - name: python-container
+      image: 
+      command: ["pwsh"]
+      workingDir: /workspace
+      volumeMounts:
+        - name: workspace-volume
+          mountPath: /workspace
+      tty: true
+      stdin: true
+  volumes:
+    - name: workspace-volume
+      hostPath:
+        path: ./workspace  # Adjust path as needed
+        type: Directory

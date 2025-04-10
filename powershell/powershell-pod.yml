@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pwsh-dev
+spec:
+  containers:
+    - name: pwsh-container
+      image: mcr.microsoft.com/powershell:latest
+      command: ["pwsh"]
+      workingDir: /workspace
+      volumeMounts:
+        - name: workspace-volume
+          mountPath: /workspace
+      tty: true
+      stdin: true
+  volumes:
+    - name: workspace-volume
+      hostPath:
+        path: ./workspace  # Adjust path as needed
+        type: Directory
